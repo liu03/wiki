@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>{% block title %}{% endblock %}</title>
+	{#% image '@WikiUIBundle/Resources/public/images/favicon.ico' output='images/favicon.ico' %}
+		<link rel="shortcut icon" href="{{ asset_url }}" type="image/x-icon">
+	{% endimage %#}
+	{% stylesheets '@WikiUIBundle/Resources/public/css/style.css' filter='cssrewrite' filter='yui_css'  output='css/style.css'%}
+    	<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+	{% endstylesheets %}
+	{% block css %}{# More css links #}{% endblock %}
+	{% javascripts 
+		'@WikiUIBundle/Resources/public/js/jquery.js'
+		output='js/compiled/jquery.js' filter='yui_js'
+	%}	
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% javascripts 
+		'@WikiUIBundle/Resources/public/js/init.js'
+		output='js/compiled/init.js' filter='yui_js'
+	%}	
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	{% block scripts %}{# More javascripts #}{% endblock %}
+</head> 
+<body> 
+	<div id="page">
+	<header>
+	</header>
+	{% block body %}{# Page content #}{% endblock %}
+	<div class="gotop">Top</div>
+	</div>
+	{{ tinymce_init() }}
+</body>
+</html>

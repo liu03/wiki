@@ -1,0 +1,57 @@
+ArticleHistory:
+    type: entity
+    table: article_history
+    fields:
+        articleHistoryId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: article_history_id
+            generator:
+                strategy: IDENTITY
+        createdAt:
+            type: date
+            nullable: false
+            column: created_at
+        log:
+            type: text
+            nullable: false
+    manyToOne:
+        status:
+            targetEntity: EditionStatus
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                status:
+                    referencedColumnName: edition_status_id
+            orphanRemoval: false
+        article:
+            targetEntity: Article
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                article_id:
+                    referencedColumnName: article_id
+            orphanRemoval: false
+        editor:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                editor:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+        chapter:
+            targetEntity: Chapter
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                chapter_id:
+                    referencedColumnName: chapter_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

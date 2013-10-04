@@ -1,0 +1,54 @@
+Admin:
+    type: entity
+    table: admin
+    fields:
+        adminId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: admin_id
+            generator:
+                strategy: IDENTITY
+        username:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        email:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        lastLogin:
+            type: date
+            nullable: false
+            column: last_login
+        status:
+            type: boolean
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+        adminGroup:
+            targetEntity: AdminGroup
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                admin_group_id:
+                    referencedColumnName: admin_group_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,4 @@
+wiki_ui:
+    resource: "@WikiUIBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,42 @@
+Category:
+    type: entity
+    table: category
+    fields:
+        categoryId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: category_id
+            generator:
+                strategy: IDENTITY
+        level:
+            type: integer
+            unsigned: false
+            nullable: false
+        label:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        description:
+            type: text
+            nullable: false
+        createdAt:
+            type: date
+            nullable: false
+            column: created_at
+        status:
+            type: boolean
+            nullable: false
+    manyToOne:
+        parentCategory:
+            targetEntity: Category
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_category_id:
+                    referencedColumnName: category_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

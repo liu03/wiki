@@ -1,0 +1,43 @@
+ChapterHistory:
+    type: entity
+    table: chapter_history
+    fields:
+        chapterHistoryId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: chapter_history_id
+            generator:
+                strategy: IDENTITY
+        chapterId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: chapter_id
+        editor:
+            type: integer
+            unsigned: false
+            nullable: false
+        status:
+            type: integer
+            unsigned: false
+            nullable: false
+        title:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        content:
+            type: text
+            nullable: false
+        createdAt:
+            type: date
+            nullable: false
+            column: created_at
+        articleId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: article_id
+    lifecycleCallbacks: {  }

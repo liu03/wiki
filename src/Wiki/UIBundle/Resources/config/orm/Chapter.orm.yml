@@ -1,0 +1,32 @@
+Chapter:
+    type: entity
+    table: chapter
+    fields:
+        chapterId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: chapter_id
+            generator:
+                strategy: IDENTITY
+        title:
+            type: text
+            nullable: false
+        content:
+            type: text
+            nullable: false
+        status:
+            type: boolean
+            nullable: false
+    manyToOne:
+        article:
+            targetEntity: Article
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                article_id:
+                    referencedColumnName: article_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

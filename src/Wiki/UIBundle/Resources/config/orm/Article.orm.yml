@@ -1,0 +1,46 @@
+Article:
+    type: entity
+    table: article
+    fields:
+        articleId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: article_id
+            generator:
+                strategy: IDENTITY
+        createdAt:
+            type: date
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: date
+            nullable: false
+            column: updated_at
+        description:
+            type: text
+            nullable: false
+        status:
+            type: boolean
+            nullable: false
+    manyToOne:
+        createdBy:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                created_by:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+        category:
+            targetEntity: Category
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: category_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

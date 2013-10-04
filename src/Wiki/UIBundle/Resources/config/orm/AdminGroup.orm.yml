@@ -1,0 +1,18 @@
+AdminGroup:
+    type: entity
+    table: admin_group
+    fields:
+        adminGroupId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: admin_group_id
+            generator:
+                strategy: IDENTITY
+        label:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+EditionStatus:
+    type: entity
+    table: edition_status
+    fields:
+        editionStatusId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: edition_status_id
+            generator:
+                strategy: IDENTITY
+        label:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }
