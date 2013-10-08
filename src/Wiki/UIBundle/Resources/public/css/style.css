@@ -11,3 +11,11 @@
 	box-shadow: 0 0 20px #aaa;
 	z-index: 9;
 }
+
+table {
+	border-collapse: collapse !important;
+}
+
+table td {
+	border: 1px solid #CCC !important;
+}
