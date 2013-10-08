@@ -19,3 +19,9 @@ table {
 table td {
 	border: 1px solid #CCC !important;
 }
+
+body {
+	font: 14px/1.5 arial,sans-serif;
+	line-height: 24px;
+	color: #333;
+}
