@@ -1,10 +1,152 @@
 {% extends "WikiUIBundle::layout.html.twig" %}
+{% block css %}
+<style>
+body {
+	margin: 0;
+}
+.container {
+	width: 100%;
+}
+ul {
+	list-style: none;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: #08c;
+}
+.w-hmenu {
+	overflow: hidden;
+	/*width: 100%;*/
+	background: #DDD;
+}
+
+.w-hmenu li {
+	display: block;
+	float: left;
+}
+
+.w-hmenu li a {
+	padding: 10px;
+}
+.w-lmenu {
+	width: 200px;
+	position: absolute;
+	left: 0;
+	background: #DDD;
+}
+
+.w-content {
+	margin-left: 200px;
+	padding: 20px;
+}
+</style>
+{% endblock %}
 {% block scripts %}
+<script>
+window.tinyMCEPreInit = {
+      base : '/bundles/import/editor',
+      suffix : '.min',
+      query : 'something'
+};
+</script>
+	{% javascripts
+		'bundles/import/editor/tinymce.min.js'
+	%}
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 {% endblock %}
 {% block body %}
-<div>sss</div>
-<textarea class="tinymce">
-</textarea>
-{{ tinymce_init() }}
+<div class="w-hmenu">
+	<ul>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+	</ul>
+</div>
+<div class="container">
+<div class="w-lmenu">
+	<ul>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+	</ul>
+</div>
+<div class="w-content">
+<form method="POST">
+<textarea class="tinymce"></textarea>
+<input type="submit" name="save" value="Save"/>
+</form>
+</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    tinyMCE.init({selector:".tinymce",
+				 language:"zh_CN",
+				 theme:"modern",
+				 plugins:["autolink innerlink image charmap preview hr anchor autoresize","searchreplace wordcount visualchars","media nonbreaking table contextmenu directionality"],
+				 menubar:false,
+				 content_css:"\/css\/style.css",
+				 resize:false,
+				 autoresize_min_height:300,
+				 toolbar1:"undo redo | styleselect | bold italic | alignl alignc alignr | anchor hr table bullist numlist outdent indent | innerlink image | preview",
+				 style_formats:[{"title":"\u6807\u9898 1","block":"h1"},{"title":"\u6807\u9898 2","block":"h2"},{"title":"\u6807\u9898 3","block":"h3"},{"title":"\u6bb5\u843d","block":"p"}],
+				 tinymce_buttons:{"cao":{"title":"Caonima","image":"http:\/\/stfalcon.com\/favicon.ico"}},
+				 setup : function(ed) {
+
+					ed.addButton('alignl', {
+					title:"图片居左",
+					icon: "alignleft",
+					cmd: "JustifyLeft",
+					 onPostRender:function() {
+							var ctrl = this;
+							ed.on('NodeChange', function(e) {
+								if ((e.element.nodeName != 'IMG'))
+									ctrl.hide();
+								else
+									ctrl.show();
+							});
+					}
+					});
+
+				ed.addButton('alignc', {
+					title:"图片居中",
+					icon: "aligncenter",
+					cmd: "JustifyCenter",
+					 onPostRender:function() {
+							var ctrl = this;
+							ed.on('NodeChange', function(e) {
+								if ((e.element.nodeName != 'IMG'))
+									ctrl.hide();
+								else
+									ctrl.show();
+							});
+					}
+					});
+
+				ed.addButton('alignr', {
+					title:"图片居右",
+					icon: "alignright",
+					cmd: "JustifyRight",
+					 onPostRender:function() {
+							var ctrl = this;
+							ed.on('NodeChange', function(e) {
+								if ((e.element.nodeName != 'IMG'))
+									ctrl.hide();
+								else
+									ctrl.show();
+							});
+					}
+					});
+				 }
+
+			});
+//]]>
+</script>
+{#{ tinymce_init() }#}
 <div>sss</div>
 {% endblock %}
