@@ -1,3 +1,7 @@
 index:
     pattern:  /index
     defaults: { _controller: WikiUIBundle:Default:index }
+    
+article:
+    pattern:  /article/{name}
+    defaults: { _controller: WikiUIBundle:Default:article }

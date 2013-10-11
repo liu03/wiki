@@ -29,4 +29,14 @@ class DefaultController extends Controller
 
         return $this->render('WikiUIBundle:Default:index.html.twig', array('name' => 'shit'));
     }
+
+    public function articleAction(Request $request, $name)
+    {
+            $article = $this->getDoctrine()
+                ->getRepository('WikiUIBundle:Category')
+                ->findOneByLabel(preg_replace('/\s+/','_',$name));
+
+
+        return $this->render('WikiUIBundle:Default:article.html.twig', array('article' => $article));
+    }
 }
