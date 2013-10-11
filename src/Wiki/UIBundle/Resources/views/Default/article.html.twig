@@ -1,0 +1,112 @@
+{% extends "WikiUIBundle::layout.html.twig" %}
+{% block css %}
+<style>
+body {
+	margin: 0;
+}
+.container {
+	width: 100%;
+}
+ul {
+	list-style: none;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: #08c;
+}
+.w-hmenu {
+	overflow: hidden;
+	/*width: 100%;*/
+	background: #FFF;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.w-hmenu li {
+	float: left;
+	margin: 0;
+}
+
+.w-hmenu li a {
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: relative;
+}
+
+.w-hmenu li span {
+	border-top: 35px solid #FFF;
+	display: block;
+	margin: 0 30px;
+	padding: 0 5px;
+	height: 29px;
+}
+
+.w-hmenu li span:hover {
+	border-bottom: 4px solid #39C;
+	height: 25px;
+}
+
+.w-lmenu {
+	width: 280px;
+	position: absolute;
+	left: 0;
+}
+
+.w-lmenu .option {
+	width: 250px;
+	margin: 0 auto;
+	border: 1px solid #E4E4E4;
+}
+
+.w-content {
+	margin-left: 280px;
+	padding: 20px;
+	background: #DED;
+	max-width: 1200px;
+	min-width: 600px;
+}
+</style>
+{% endblock %}
+{% block scripts %}
+<script>
+window.tinyMCEPreInit = {
+      base : '/bundles/import/editor',
+      suffix : '.min',
+      query : 'something'
+};
+</script>
+	{% javascripts
+		'bundles/import/editor/tinymce.min.js'
+	%}
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
+{% block body %}
+<div class="w-hmenu">
+	<ul>
+		<li><a href="#"><span>MenuItem</span></a></li>
+		<li><a href="#"><span>LongMenuItem</span></a></li>
+		<li><a href="#"><span>Item</span></a></li>
+		<li><a href="#"><span>Just a test</span></a></li>
+	</ul>
+</div>
+<div class="container">
+<div class="w-lmenu">
+	<div class="option">
+		<ul>
+			<li><a href="#"><span></span>Item</a></li>
+			<li><a href="#"><span></span>Item</a></li>
+			<li><a href="#"><span><span>Item</a></li>
+			<li><a href="#"><span><span>Item</a></li>
+			<li><a href="#"><span><span>Item</a></li>
+		</ul>
+	</div>
+</div>
+<div class="w-content">
+{{ article.description| raw }}
+</div>
+</div>
+{% endblock %}
